@@ -54,6 +54,15 @@ function removeCharacters(arry, chars) {
   });
 }
 
+function sortByNumericAttribute(attr, order = "dec") {
+  return function (arry) {
+    const dec = (ob01, ob02) => ob02[attr] - ob01[attr];
+    const crec = (ob01, ob02) => ob01[attr] - ob02[attr];
+
+    return arry.sort(order === "dec" ? dec : crec);
+  };
+}
+
 module.exports = {
   readingDirectory,
   filteringFiles,
@@ -62,4 +71,5 @@ module.exports = {
   removeEmptyLine,
   removeIfANumber,
   removeCharacters,
+  sortByNumericAttribute,
 };

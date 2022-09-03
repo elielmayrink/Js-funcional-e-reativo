@@ -18,15 +18,14 @@ const symbols = [
   ")",
 ];
 function groupWords(words) {
-  return words.reduce((group, word) => {
-    const receivedWord = word.toLowerCase();
-    if (group[receivedWord]) {
-      group[receivedWord] += 1;
-    } else {
-      group[receivedWord] = 1;
-    }
-    return group;
-  }, {});
+  return Object.values(
+    words.reduce((acc, word) => {
+      const receivedWord = word.toLowerCase();
+      const amount = acc[receivedWord] ? acc[receivedWord].amount + 1 : 1;
+      acc[receivedWord] = { el: receivedWord, amount };
+      return acc;
+    }, {})
+  );
 }
 fns
   .readingDirectory(realPath)
@@ -42,4 +41,5 @@ fns
   .then(fns.removeEmptyLine)
   .then(fns.removeIfANumber)
   .then(groupWords)
+  .then(fns.sortByNumericAttribute("amount"))
   .then(console.log);
