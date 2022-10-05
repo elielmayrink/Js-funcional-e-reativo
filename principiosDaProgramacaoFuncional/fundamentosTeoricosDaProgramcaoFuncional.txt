@@ -1,0 +1,10 @@
+
+Fundamentos Teoricos da programçao funcional
+
+1 => Função pura 
+  * Uma função pura é uma função em que o valor de retorno é determinado apenas por 
+    seus valores de entrada, sem efeitos colaterais observáveis
+
+2 => Higher-Order Function
+  *Funçoes que operam em outras funçoes,
+  tomando-as como argumentos ou retornando-as
